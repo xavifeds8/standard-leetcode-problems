@@ -1,13 +1,20 @@
-nums = [0,3,7,2,5,8,4,6,0,1]
+nums = list(map(int , input.split()))
+if not len(nums):  print(0)
 nums.sort()
-max_val =0
-cnt =  1
-# [0, 0, 1, 2, 3, 4, 5, 6, 7, 8]
-for i in range(len(nums)-1):
-    if nums[i] + 1 == nums[i+1]: 
-        cnt +=1
-        max_val =  max(max_val , cnt)
-    else: 
-        cnt= 1
-print(max_val)
+i = 0
+for j in range(len(nums)):
+    if nums[i]!= nums[j]:
+        i+=1
+        nums[i] = nums[j]
+nums = nums[:i+1]
 print(nums)
+max_count = 1
+count = 1
+for i in range(1 , len(nums)):
+    if nums[i] == nums[i-1]+1:
+        count +=1
+    else:
+        count = 1
+    max_count = max(count , max_count)
+
+print(max_count)
